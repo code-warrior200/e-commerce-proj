@@ -78,11 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => UserProfileScreen(),),
+          builder: (context) => UserProfileScreen(),
+        ),
       );
       break;
   }
 }
+
 
 
   void _addToCart(Map<String, dynamic> product) {
