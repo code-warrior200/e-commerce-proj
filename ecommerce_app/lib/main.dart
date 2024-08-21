@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => AuthProvider(),
       child: MaterialApp(
-        title: 'E-commerce App',
+        title: 'ShoppiVerse',
         debugShowCheckedModeBanner: false,  // Removes the debug banner
         initialRoute: '/onboarding', // Set the initial route to OnboardingScreen
         routes: {
