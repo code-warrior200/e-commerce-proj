@@ -9,11 +9,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 
-  final List<String> _backgroundImages = [
-    'assets/image1.jpg',
-    'assets/image2.jpg',
-    'assets/image3.jpg',
-    'assets/image3.jpg',
+  final List<Color> _backgroundColors = [
+    Colors.blue, 
+    Colors.green, 
+    Colors.orange, 
+    Colors.purple,
   ];
 
   @override
@@ -35,7 +35,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _onNext() {
-    if (_currentIndex < _backgroundImages.length - 1) {
+    if (_currentIndex < _backgroundColors.length - 1) {
       _pageController.nextPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -63,14 +63,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
+          // Background Color
           Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(_backgroundImages[_currentIndex]),
-                fit: BoxFit.cover,
-              ),
-            ),
+            color: _backgroundColors[_currentIndex],
           ),
           // PageView with Onboarding Content
           PageView(
@@ -108,7 +103,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: _onPrevious,
                     child: Text("Previous"),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white, backgroundColor: Colors.black54,
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.black54,
                       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -122,9 +118,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             right: 20,
             child: ElevatedButton(
               onPressed: _onNext,
-              child: Text(_currentIndex == _backgroundImages.length - 1 ? "Done" : "Next"),
+              child: Text(_currentIndex == _backgroundColors.length - 1 ? "Done" : "Next"),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.black54,
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.black54,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -135,7 +132,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Positioned(
             top: 20,
             right: 20,
-            child: _currentIndex < _backgroundImages.length - 1
+            child: _currentIndex < _backgroundColors.length - 1
                 ? TextButton(
                     onPressed: _onSkip,
                     child: Text(
