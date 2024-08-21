@@ -7,14 +7,13 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
-  Color _backgroundColor = Colors.blueAccent;
   int _currentIndex = 0;
 
-  final List<Color> _backgroundColors = [
-    Colors.blueAccent,
-    Colors.blueAccent,
-    Colors.blueAccent,
-    Colors.blueAccent,
+  final List<String> _backgroundImages = [
+    'assets/image1.jpg',
+    'assets/image2.jpg',
+    'assets/image3.jpg',
+    'assets/image3.jpg',
   ];
 
   @override
@@ -32,12 +31,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void _onPageChanged() {
     setState(() {
       _currentIndex = _pageController.page!.round();
-      _backgroundColor = _backgroundColors[_currentIndex];
     });
   }
 
   void _onNext() {
-    if (_currentIndex < _backgroundColors.length - 1) {
+    if (_currentIndex < _backgroundImages.length - 1) {
       _pageController.nextPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
@@ -63,32 +61,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _backgroundColor,
       body: Stack(
         children: [
+          // Background Image
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(_backgroundImages[_currentIndex]),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // PageView with Onboarding Content
           PageView(
             controller: _pageController,
             children: [
               _buildPage(
-                color: _backgroundColors[0],
                 title: "Welcome to Shoppivese",
                 description: "Discover amazing features.",
                 icon: Icons.shop,
               ),
               _buildPage(
-                color: _backgroundColors[1],
                 title: "Safe & Secured",
-                description: "Safe and encripted transactions",
+                description: "Safe and encrypted transactions",
                 icon: Icons.lock,
               ),
               _buildPage(
-                color: _backgroundColors[2],
                 title: "Fast delivery",
                 description: "Fast and reliable.",
                 icon: Icons.rocket,
               ),
               _buildPage(
-                color: _backgroundColors[3],
                 title: "Get Started",
                 description: "Let's get you set up!",
                 icon: Icons.check_circle,
@@ -96,6 +99,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ],
           ),
+          // Navigation Buttons
           Positioned(
             bottom: 20,
             left: 20,
@@ -104,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     onPressed: _onPrevious,
                     child: Text("Previous"),
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: _backgroundColor, backgroundColor: Colors.white,
+                      foregroundColor: Colors.white, backgroundColor: Colors.black54,
                       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -118,9 +122,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             right: 20,
             child: ElevatedButton(
               onPressed: _onNext,
-              child: Text(_currentIndex == _backgroundColors.length - 1 ? "Done" : "Next"),
+              child: Text(_currentIndex == _backgroundImages.length - 1 ? "Done" : "Next"),
               style: ElevatedButton.styleFrom(
-                foregroundColor: _backgroundColor, backgroundColor: Colors.white,
+                foregroundColor: Colors.white, backgroundColor: Colors.black54,
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -131,7 +135,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Positioned(
             top: 20,
             right: 20,
-            child: _currentIndex < _backgroundColors.length - 1
+            child: _currentIndex < _backgroundImages.length - 1
                 ? TextButton(
                     onPressed: _onSkip,
                     child: Text(
@@ -147,7 +151,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildPage({
-    required Color color,
     required String title,
     required String description,
     required IconData icon,
