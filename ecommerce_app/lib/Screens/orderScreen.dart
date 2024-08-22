@@ -1,4 +1,6 @@
 // lib/Screens/OrderScreen.dart
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class OrderScreen extends StatelessWidget {
@@ -47,7 +49,7 @@ class OrderScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [Colors.blueAccent, Colors.lightBlueAccent],
+                            colors: const [Colors.blueAccent, Colors.lightBlueAccent],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
