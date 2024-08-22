@@ -10,10 +10,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentIndex = 0;
 
   final List<Color> _backgroundColors = [
-    Colors.blue, 
-    Colors.green, 
-    Colors.orange, 
-    Colors.purple,
+    Colors.blueAccent,
+    Colors.blueAccent,
+    Colors.blueAccent,
+    Colors.blueAccent,
   ];
 
   @override
