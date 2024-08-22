@@ -86,6 +86,36 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 
+//   switch (index) {
+//     case 0:
+//       Navigator.pushReplacement(
+//         context,
+//         MaterialPageRoute(builder: (context) => HomeScreen()),
+//       );
+//       break;
+//     case 1:
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(
+//           builder: (context) => CartItemScreen(
+//             cartItems: _cartItems,
+//             onDeleteItem: _removeFromCart,
+//           ),
+//         ),
+//       );
+//       break;
+//     case 2:
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(
+//           builder: (context) => UserProfileScreen(),
+//         ),
+//       );
+//       break;
+//   }
+// }
+
+
 
   void _addToCart(Map<String, dynamic> product) {
     setState(() {
@@ -317,10 +347,10 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.list_alt),
-          //   label: 'Orders',
-          // ),
+          BottomNavigationBarItem(
+             icon: Icon(Icons.list_alt),
+             label: 'Orders',
+           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
