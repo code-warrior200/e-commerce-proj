@@ -3,6 +3,7 @@ import 'package:ecommerce_app/Screens/CartItemScreen.dart';
 import 'package:ecommerce_app/Screens/NotificationScreen.dart';
 import 'package:ecommerce_app/Screens/ProductDetailScreen.dart';
 import 'package:ecommerce_app/Screens/UserProfileScreen.dart';
+import 'package:ecommerce_app/Screens/orderScreen.dart';
 import 'package:flutter/material.dart';
 import '../Services/api_service.dart';
 
@@ -67,10 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CartItemScreen(
-            cartItems: _cartItems,
-            onDeleteItem: _removeFromCart,
-          ),
+          builder: (context) => OrderScreen(), // Connect to the OrderScreen
         ),
       );
       break;
@@ -84,37 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
       break;
   }
 }
-
-
-//   switch (index) {
-//     case 0:
-//       Navigator.pushReplacement(
-//         context,
-//         MaterialPageRoute(builder: (context) => HomeScreen()),
-//       );
-//       break;
-//     case 1:
-//       Navigator.push(
-//         context,
-//         MaterialPageRoute(
-//           builder: (context) => CartItemScreen(
-//             cartItems: _cartItems,
-//             onDeleteItem: _removeFromCart,
-//           ),
-//         ),
-//       );
-//       break;
-//     case 2:
-//       Navigator.push(
-//         context,
-//         MaterialPageRoute(
-//           builder: (context) => UserProfileScreen(),
-//         ),
-//       );
-//       break;
-//   }
-// }
-
 
 
   void _addToCart(Map<String, dynamic> product) {
