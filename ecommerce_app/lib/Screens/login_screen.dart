@@ -111,7 +111,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/register');
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: Text(
                   "Don't have an account? Register here.",
